@@ -1,10 +1,3 @@
-<!--
- * @功能描述: 
- * @作者: 郑文杰
- * @Date: 2019-10-09 15:24:04
- * @最新修改内容: 
- * @LastEditTime: 2020-03-14 18:50:52
- -->
 <template>
   <div>
     <el-container class="home-container">
