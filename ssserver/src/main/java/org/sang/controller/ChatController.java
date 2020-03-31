@@ -23,6 +23,7 @@ import java.util.List;
 public class ChatController {
     @Autowired
     HrService hrService;
+
     @Autowired
     SysMsgService sysMsgService;
 

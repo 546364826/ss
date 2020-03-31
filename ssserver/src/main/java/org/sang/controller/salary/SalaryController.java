@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 工资账套配置
+ *
  */
 @RestController
 @RequestMapping("/salary/sob")

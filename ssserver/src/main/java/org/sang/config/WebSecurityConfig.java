@@ -49,12 +49,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/index.html", "/static/**", "/login_p", "/system/hr/regs","/favicon.ico");
+        web.ignoring().antMatchers("/index.html", "/static/**", "/login_p", "/system/hr/regs", "/favicon.ico");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.authorizeRequests()//请求授权 http.authorizeRequests()方法有很多子方法，每个子匹配器将会按照声明的顺序起作用。
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O o) {
@@ -64,9 +64,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .and()
-                .formLogin().loginPage("/login_p").loginProcessingUrl("/login")
-                .usernameParameter("username").passwordParameter("password")
-                .failureHandler(new AuthenticationFailureHandler() {
+                .formLogin().loginPage("/login_p")//自定义请求地址
+                .loginProcessingUrl("/login")//默认请求地址
+                .usernameParameter("username")//默认的用户名的参数 username
+                .passwordParameter("password")//默认的密码的参数 password
+                .failureHandler(new AuthenticationFailureHandler() {//请求失败的处理
                     @Override
                     public void onAuthenticationFailure(HttpServletRequest req,
                                                         HttpServletResponse resp,
@@ -95,7 +97,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         out.close();
                     }
                 })
-                .successHandler(new AuthenticationSuccessHandler() {
+                .successHandler(new AuthenticationSuccessHandler() {//请求成功的处理
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest req,
                                                         HttpServletResponse resp,
