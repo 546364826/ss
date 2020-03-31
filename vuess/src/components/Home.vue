@@ -20,7 +20,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <!-- <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>设置</el-dropdown-item> -->
+              <el-dropdown-item>设置</el-dropdown-item>-->
               <el-dropdown-item command="logout" divided>注销</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -51,9 +51,9 @@
         <el-main>
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-
             <el-breadcrumb-item v-text="this.$router.currentRoute.name"></el-breadcrumb-item>
           </el-breadcrumb>
+          <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">欢迎使用派车管理系统！</div>
           <keep-alive>
             <router-view v-if="this.$route.meta.keepAlive"></router-view>
           </keep-alive>
@@ -141,6 +141,13 @@ export default {
   padding: 0px;
 }
 
+.homeWelcome {
+  text-align: center;
+  font-size: 30px;
+  font-family: 华文行楷;
+  color: #409eff;
+  padding-top: 50px;
+}
 .home-aside {
   background-color: #ececec;
 }
